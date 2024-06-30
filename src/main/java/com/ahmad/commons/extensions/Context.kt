@@ -42,6 +42,7 @@ fun Context.activityRoot() =
 
     (this as? Activity)?.let {
         it.findViewById<ViewGroup>(android.R.id.content)
+
             ?.getChildAt(0)
     }
 
