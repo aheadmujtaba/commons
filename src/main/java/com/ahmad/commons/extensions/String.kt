@@ -31,6 +31,7 @@ fun <T> String.getValue(defaultValue: T): T {
         is Double -> kv.decodeDouble(this, defaultValue) as T
         else -> {
             defaultValue
+
         }
     }
 }
