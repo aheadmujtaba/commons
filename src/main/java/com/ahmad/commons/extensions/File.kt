@@ -6,6 +6,7 @@ const val savedVideoDir = "/SavedVideos/"
 const val savedImagesDir = "/SavedImages/"
 const val savedDocumentDir = "/SavedDocuments/"
 const val savedQrCodeDir = "/QrCodes/"
+
 val File.size get() = if (!exists()) 0.0 else length().toDouble()
 val File.sizeInKb get() = size / 1024
 val File.sizeInMb get() = sizeInKb / 1024
