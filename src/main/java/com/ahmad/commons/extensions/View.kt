@@ -19,6 +19,7 @@ fun View.makeGone(b:Boolean) {
 
 fun Boolean.toVisibility() {
     if (this) View.VISIBLE
+
     else View.GONE
 }
 
