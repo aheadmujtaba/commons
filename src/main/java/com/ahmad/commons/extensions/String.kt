@@ -24,7 +24,7 @@ fun <T> String.storeWithValue(value: T): Boolean {
 fun <T> String.getValue(defaultValue: T): T {
     val kv = MMKV.defaultMMKV()
     return when (defaultValue) {
-        is Boolean -> kv.decodeBool(this, defaultValue)   as T
+        is Boolean -> kv.decodeBool(this, defaultValue) as T
         is Int -> kv.decodeInt(this, defaultValue) as T
         is Long -> kv.decodeLong(this, defaultValue) as T
         is Float -> kv.decodeFloat(this, defaultValue) as T
