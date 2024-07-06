@@ -46,10 +46,6 @@ fun TextView.setTextClickable(
         val boldSpan = StyleSpan(Typeface.BOLD)
         spannableString.setSpan(boldSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
     }
-
-
-
-
     this.text = spannableString
 
 }
