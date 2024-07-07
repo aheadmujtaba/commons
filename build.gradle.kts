@@ -41,7 +41,7 @@ dependencies {
     api("com.tencent:mmkv:1.3.5")
     api("com.github.bumptech.glide:glide:4.16.0")
     api("com.intuit.sdp:sdp-android:1.0.6")
-    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-scalars:2.9.0")
+    api ("com.squareup.retrofit2:retrofit:2.11.0")
+    api ("com.squareup.retrofit2:converter-gson:2.9.0")
+    api ("com.squareup.retrofit2:converter-scalars:2.9.0")
 }
