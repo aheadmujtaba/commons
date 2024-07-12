@@ -1,7 +1,13 @@
 package com.ahmad.commons.extensions
 
+import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
+import android.net.Uri
 import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
@@ -48,4 +54,27 @@ fun TextView.setTextClickable(
     }
     this.text = spannableString
 
+}
+
+fun TextView.setUrls(urls: List<String>) {
+    val spannableStringBuilder = SpannableStringBuilder()
+
+    for (url in urls) {
+        val spannableString = SpannableString("$url\n")
+
+        val clickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                context.startActivity(intent)
+            }
+        }
+
+        spannableString.setSpan(clickableSpan, 0, url.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(UnderlineSpan(), 0, url.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableStringBuilder.append(spannableString)
+    }
+
+    this.text = spannableStringBuilder
+    this.movementMethod = LinkMovementMethod.getInstance()
+    this.highlightColor = Color.BLUE
 }
