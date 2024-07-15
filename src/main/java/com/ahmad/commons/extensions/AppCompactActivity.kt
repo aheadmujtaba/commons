@@ -1,7 +1,5 @@
 package com.ahmad.commons.extensions
 
-import android.content.Intent
-import android.net.Uri
 import android.view.View
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
@@ -19,15 +17,6 @@ fun AppCompatActivity.adjustViewBounds(@IdRes rootId: Int) {
     }
 }
 
-fun AppCompatActivity.openLink(url: String) {
-    val intent = Intent(Intent.ACTION_VIEW)
-    intent.data = Uri.parse(url)
-    if (intent.resolveActivity(packageManager) != null) {
-        startActivity(intent)
-    } else {
-        activityRoot()?.makeSnackBar("Unable to find application to open link")?.show()
-    }
-}
 
 fun View.makeSnackBar(
     msg: String,

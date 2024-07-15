@@ -61,3 +61,4 @@ fun String.getFileSizeFromPath():String{
     val file = File(this)
     return file.strSize()
 }
+
