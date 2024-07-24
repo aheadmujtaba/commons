@@ -57,8 +57,9 @@ fun String.getDurationFromPath(): Int {
     }
 }
 
-fun String.getFileSizeFromPath():String{
+fun String.getFileSizeFromPath(): String {
     val file = File(this)
     return file.strSize()
 }
 
+fun String.removeWhitespaces() = this.replace(" ", "")
