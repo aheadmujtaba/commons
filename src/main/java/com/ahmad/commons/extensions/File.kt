@@ -1,6 +1,8 @@
 package com.ahmad.commons.extensions
 
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 const val savedVideoDir = "/SavedVideos/"
 const val savedImagesDir = "/SavedImages/"
@@ -22,6 +24,9 @@ fun File.sizeStrInGb(decimals: Int = 0): String = "%.${decimals}f".format(sizeIn
 fun File.sizeStrWithKb(decimals: Int = 0): String = sizeStrInKb(decimals) + "Kb"
 fun File.sizeStrWithMb(decimals: Int = 0): String = sizeStrInMb(decimals) + "Mb"
 fun File.sizeStrWithGb(decimals: Int = 0): String = sizeStrInGb(decimals) + "Gb"
+fun File.getLastModifiedDate(dateFormat: String? = null): String {
+    return SimpleDateFormat(dateFormat?:"MM/dd/yyyy", Locale.getDefault()).format(lastModified())
+}
 
 fun Double.formatFileSize(): String {
     val sizeBytes = this

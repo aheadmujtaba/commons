@@ -63,3 +63,7 @@ fun String.getFileSizeFromPath(): String {
 }
 
 fun String.removeWhitespaces() = this.replace(" ", "")
+
+fun String.asFile(): File {
+    return File(this)
+}

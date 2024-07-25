@@ -8,11 +8,11 @@ fun Uri.filename(): String {
     return this.pathSegments.last().substringAfterLast("/")
 }
 
-fun Uri.isSaved(context: Context): Boolean {
+fun Uri.isSaved(context: Context, isStatusData: Boolean = false): Boolean {
     return File(
-        context.externalCacheDir?.path + if (this.filename().endsWith(".mp4")) {
+        context.externalCacheDir?.path +if(isStatusData){"/Status"}else{"/WhatsClone"}   + if (this.filename().endsWith(".mp4")) {
             savedVideoDir
-        } else if (this.filename().endsWith(".jpg")) {
+        } else if (this.filename().endsWith(".jpg") or this.filename().endsWith("jpeg")) {
             savedImagesDir
         } else {
             savedDocumentDir
