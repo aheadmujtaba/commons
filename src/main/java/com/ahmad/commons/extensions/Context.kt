@@ -52,7 +52,7 @@ fun Context.startActivity(
     dest: Class<*>,
     clearTask: Boolean = false,
     flags: Int? = null,
-    data: (Intent) -> Unit? = { null }
+    data: (Intent) -> Any = {  }
 ) {
     runCatching {
         this.startActivity(Intent(this, dest).apply {
@@ -63,6 +63,7 @@ fun Context.startActivity(
                 this.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
             data.invoke(this)
+
         })
     }.onFailure {
         it.printStackTrace()

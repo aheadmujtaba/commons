@@ -1,10 +1,15 @@
 package com.ahmad.commons.extensions
 
+import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.fragment.app.Fragment
 
-fun Fragment.startActivity(dest: Class<*>) {
-    requireContext().startActivity(dest)
+fun Fragment.startActivity(
+    dest: Class<*>, clearTask: Boolean = false,
+    flags: Int? = null,
+    data: (Intent) -> Any = {  }
+) {
+    requireContext().startActivity(dest, clearTask, flags, data)
 }
 
 fun <T> Fragment.askPermission(permissionLauncher: ActivityResultLauncher<T>, permission: T) {
@@ -30,6 +35,7 @@ fun Fragment.shareEmailVia(email: String, subject: String, body: String) {
 fun Fragment.openUrl(urlString: String) {
     requireActivity().openUrl(urlString)
 }
-fun Fragment.shareContact(vCard:String){
+
+fun Fragment.shareContact(vCard: String) {
     requireContext().shareContactVCard(vCard)
 }
