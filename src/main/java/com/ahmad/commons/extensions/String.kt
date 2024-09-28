@@ -22,6 +22,7 @@ fun <T> String.storeWithValue(value: T): Boolean {
     }
 }
 
+@Suppress("UNCHECKED_CAST")
 fun <T> String.getValue(defaultValue: T): T {
     val kv = MMKV.defaultMMKV()
     return when (defaultValue) {
