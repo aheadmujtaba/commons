@@ -15,7 +15,6 @@ fun <T> String.storeWithValue(value: T): Boolean {
         is Long -> kv.encode(this, (value as Long))
         is Float -> kv.encode(this, (value as Float))
         is Double -> kv.encode(this, (value as Double))
-        is String -> kv.encode(this ,(value as? String))
         else -> {
             false
         }
@@ -31,7 +30,6 @@ fun <T> String.getValue(defaultValue: T): T {
         is Long -> kv.decodeLong(this, defaultValue) as T
         is Float -> kv.decodeFloat(this, defaultValue) as T
         is Double -> kv.decodeDouble(this, defaultValue) as T
-        is String -> kv.decodeString(this , defaultValue) as T
         else -> {
             defaultValue
         }

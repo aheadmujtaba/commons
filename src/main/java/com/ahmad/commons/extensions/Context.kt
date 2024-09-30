@@ -1,6 +1,7 @@
 package com.ahmad.commons.extensions
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -196,4 +197,22 @@ fun Context.connectToWifi(ssid: String, pwd: String) {
     wifiManager.reconnect()
 }
 
+
+fun Context.openMoreApps(devName:String){
+    try {
+        startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("market://search?q=pub:$devName")
+            )
+        )
+    } catch (anfe: ActivityNotFoundException) {
+        startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("http://play.google.com/store/apps/developer?id=$devName")
+            )
+        )
+    }
+}
 
