@@ -53,7 +53,7 @@ fun Context.startActivity(
     dest: Class<*>,
     clearTask: Boolean = false,
     flags: Int? = null,
-    data: (Intent) -> Any = {  }
+    data: (Intent) -> Any = { }
 ) {
     runCatching {
         this.startActivity(Intent(this, dest).apply {
@@ -198,7 +198,7 @@ fun Context.connectToWifi(ssid: String, pwd: String) {
 }
 
 
-fun Context.openMoreApps(devName:String){
+fun Context.openMoreApps(devName: String) {
     try {
         startActivity(
             Intent(
@@ -214,5 +214,9 @@ fun Context.openMoreApps(devName:String){
             )
         )
     }
+}
+
+fun Context.rateUsInMarket() {
+    openUrl("https://play.google.com/store/apps/details?id=$packageName")
 }
 
