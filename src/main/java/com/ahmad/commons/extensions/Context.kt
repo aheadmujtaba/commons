@@ -7,11 +7,13 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.net.Uri
 import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.provider.ContactsContract
+import android.provider.OpenableColumns
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -220,3 +222,17 @@ fun Context.rateUsInMarket() {
     openUrl("https://play.google.com/store/apps/details?id=$packageName")
 }
 
+fun Context.getFileNameUsingContentResolver(uri: Uri?): String {
+    if(uri == null){
+        return ""
+    }
+    var fileName: String? = null
+    val cursor: Cursor? = contentResolver.query(uri, null, null, null, null)
+
+    cursor?.use {
+        if (it.moveToFirst()) {
+            fileName = it.getString(it.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME))
+        }
+    }
+    return fileName ?: "Unknown File Name"
+}
